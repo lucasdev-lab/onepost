@@ -1,5 +1,5 @@
 // Minimal service worker: lets the app open instantly; always asks the network first so updates show up.
-const CACHE = 'onepost-shell-v1';
+const CACHE = 'social assistant-shell-v1';
 self.addEventListener('install', e => { self.skipWaiting(); e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', './index.html']).catch(() => {}))); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
 self.addEventListener('fetch', e => {
